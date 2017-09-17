@@ -23,30 +23,29 @@ def char_sub_first(password):
 #This function iterates through the second character and then continues through all the rest of the letters
 def char_sub_rest(password):
     password_length = len(password)
-    count_thing = 0
-    count_max = 1
+    countervar = 1
+    count_max = 10
     first_char_counter = 0
     second_char_counter = 1
     third_char_counter = 2
     fourth_char_counter = password_length
-    #first_char = password[first_char_counter]
-    #continuation_char = password[continuation_char_counter:]
     second_iter = []
-    while count_thing < count_max:
-        for an_chars in alpha_num:
-            count_thing += 1
+
+    for an_chars in alpha_num:
+        second_iter.append(list(chain(password[first_char_counter:second_char_counter], an_chars, password[third_char_counter:fourth_char_counter])))
+        countervar += 1
+        if countervar == count_max:
+            #first_char_counter += 1
+            second_char_counter += 1
+            #third_char_counter += 1
+            #fourth_char_counter +=1
+
             second_iter.append(list(chain(password[first_char_counter:second_char_counter], an_chars, password[third_char_counter:fourth_char_counter])))
-    else:
-        first_char_counter += 1
-        second_char_counter += 1
-        second_iter.append(list(chain(password[first_char_counter:second_char_counter], an_chars,
-                                      password[third_char_counter:fourth_char_counter])))
-        #third_char_counter += 1
-        #fourth_char_counter +=1
+
     return second_iter
-    #print(count_thing)
+    #print(countervar)
 
-
+#pprint.pprint(char_sub_first(guessedpwlist))
 pprint.pprint(char_sub_rest(guessedpwlist))
 
 
