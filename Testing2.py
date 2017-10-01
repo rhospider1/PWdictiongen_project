@@ -1,12 +1,15 @@
+from itertools import chain, combinations
 
-list_x = [1,3,4,5,6,7,9]
-counter_var = 0
-
-for items in list_x:
-    new_list = items + 2
-    counter_var += 1
-    print(new_list)
+min_pw_length = 4
 
 
-print("Counter variable is " + str(counter_var))
+def powerset(iterable):
+    master_list = []
+    s = list(iterable)
+    x = list(chain.from_iterable(combinations(s, r) for r in range(len(s)+1)))
+    for items in x:
+        if len(items) > min_pw_length:
+            master_list.append(items)
+    return master_list
 
+print(powerset("password"))
